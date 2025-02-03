@@ -1,0 +1,8 @@
+# Ignorar archivos y directorios de Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+terraform.tfvars.json
+*.tfplan
+crash.log
