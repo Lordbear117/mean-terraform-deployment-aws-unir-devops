@@ -5,7 +5,7 @@ provider "aws" {
 
 # Llamada al módulo de red
 module "network" {
-  source = "./modules/network"
+  source     = "./modules/network"
   cidr_block = var.vpc_cidr_block
 }
 
@@ -27,8 +27,11 @@ module "instances" {
 }
 
 # Llamada al módulo de balanceador de carga
-# module "load-balancer" {
-#   source = "./modules/load-balancer"
-#   subnet_id = module.network.subnet_id
-#   sg_id = module.security.sg_id
-# }
+module "load_balancer" {
+  source     = "./modules/load_balancer"
+  vpc_id = module.network.vpc_id
+  mean_sg_id = module.security.mean_sg_id
+  public_subnet  = module.network.public_subnet_id
+  secondary_public_subnet  = module.network.secondary_public_subnet_id
+  mean_instance_id = module.instances.mean_instance_id
+}

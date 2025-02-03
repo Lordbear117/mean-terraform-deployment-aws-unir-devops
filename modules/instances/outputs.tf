@@ -19,3 +19,8 @@ output "mongo_private_ip" {
   description = "Private IP of the MongoDB instance"
   value       = aws_instance.mongo_instance.private_ip
 }
+
+output "mean_instance_id" {
+  value = aws_instance.mean_instance.id
+  description = "El ID de la instancia del stack MEAN"
+}
